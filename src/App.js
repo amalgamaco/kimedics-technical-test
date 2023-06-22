@@ -1,18 +1,22 @@
 import './App.css';
-import {Box, createTheme, ThemeProvider} from "@mui/material";
+import {createTheme, ThemeProvider} from "@mui/material";
 import SideNavBar from "./components/SideNavBar/SideNavBar";
-import CssBaseline from "@mui/material/CssBaseline";
 import * as React from "react";
-import Typography from "@mui/material/Typography";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import HomePage from "./pages/Home/HomePage";
+import PracticesPage from "./pages/Practices/PracticesPage";
+import {PRACTICES_PATH} from "./components/SideNavBar/NavigationItems";
+import Box from "@mui/material/Box";
 
 
 const theme = createTheme({
   palette: {
     primary: {
       main: "#034D7A",
+      selectedNavBarIcon: "#0088da"
     },
     secondary: {
-      main: "#02A89D"
+      main: "#02A89D",
     }
   }
 });
@@ -20,15 +24,16 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <SideNavBar/>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <Typography paragraph>
-            Lorem ipsum dolor sit amet
-          </Typography>
+      <BrowserRouter>
+        <Box sx={{ display: 'flex' }}>
+          <SideNavBar>
+              <Routes>
+                <Route exact path="/" element={<HomePage />} />
+                <Route path={PRACTICES_PATH} element={<PracticesPage/>}/>
+              </Routes>
+          </SideNavBar>
         </Box>
-      </Box>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

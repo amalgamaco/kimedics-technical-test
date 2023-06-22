@@ -1,50 +1,95 @@
 import {
 	CalendarTodayOutlined, ChatBubbleOutline,
-	Contacts,
 	ContactsOutlined,
 	DashboardOutlined,
 	LocationOnOutlined, MoreTimeOutlined, PaidOutlined, QuestionMarkOutlined, RedeemOutlined, SettingsOutlined
 } from "@mui/icons-material";
 
+
+export const PRACTICES_PATH = "/practices"
 export const NAVIGATION_ITEMS = [
 	{
 		text: "Dashboard",
-		icon: <DashboardOutlined/>
+		icon: <DashboardOutlined/>,
+		to: "/"
 	},
 	{
 		text: "Providers",
-		icon: <ContactsOutlined/>
+		icon: <ContactsOutlined/>,
+		to: "/providers/dashboard",
+		subItems: [
+			{
+				text: "Dashboard",
+				to: "/providers/dashboard"
+			},
+			{
+				text: "Providers",
+				to: "/providers/providers"
+			},
+			{
+				text: "My Tasks",
+				to: "/providers/myTasks"
+			},
+			{
+				text: "All Tasks",
+				to: "/providers/allTasks"
+			},
+			{
+				text: "Roster",
+				to: "/providers/roster"
+			},
+			{
+				text: "Privileges",
+				to: "/providers/privileges"
+			},
+			{
+				text: "Credentialing",
+				to: "/providers/credentialing"
+			},
+			{
+				text: "State Laws",
+				to: "/providers/stateLaws"
+			}
+		]
 	},
 	{
 		text: "Practices",
-		icon: <LocationOnOutlined/>
+		icon: <LocationOnOutlined/>,
+		to: PRACTICES_PATH
 	},
 	{
 		text: "Jobs",
-		icon: <RedeemOutlined/>
+		icon: <RedeemOutlined/>,
+		to: "/jobs"
 	},
 	{
 		text: "Schedules",
-		icon: <CalendarTodayOutlined/>
+		icon: <CalendarTodayOutlined/>,
+		to: "/schedules"
 	},
 	{
 		text: "Time & invoices",
-		icon: <MoreTimeOutlined/>
+		icon: <MoreTimeOutlined/>,
+		to: "/timeAndInvoices"
 	},
 	{
 		text: "Time & pay",
-		icon: <PaidOutlined/>
+		icon: <PaidOutlined/>,
+		to: "/timeAndPay"
 	},
 	{
 		text: "Messages",
-		icon: <ChatBubbleOutline/>
+		icon: <ChatBubbleOutline/>,
+		to: "/messages"
 	},
 	{
 		text: "Help",
-		icon: <QuestionMarkOutlined/>
+		icon: <QuestionMarkOutlined/>,
+		to: "/help"
 	},
 	{
 		text: "Settings",
-		icon: <SettingsOutlined/>
+		icon: <SettingsOutlined/>,
+		to: "/settings"
 	}
 ]
