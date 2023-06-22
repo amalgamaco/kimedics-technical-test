@@ -60,7 +60,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const SideNavBar = ( { children } ) => {
 	const location = useLocation();
 	const [open, setOpen] = React.useState(true);
-	console.log("location", location.pathname)
 
 	useEffect(() => {
 		if(location.pathname === PRACTICES_PATH){
@@ -106,9 +105,8 @@ const SideNavBar = ( { children } ) => {
 				<Divider />
 				<List>
 					{NAVIGATION_ITEMS.map((item) => (
-						<>
+						<Box key={item.text}>
 							<ListItem
-								key={item.text}
 								disablePadding sx={{ display: 'block' }}
 							>
 								<ListItemButton
@@ -157,7 +155,7 @@ const SideNavBar = ( { children } ) => {
 									</List>
 								</Collapse>
 							)}
-						</>
+						</Box>
 					))}
 				</List>
 			</Drawer>
