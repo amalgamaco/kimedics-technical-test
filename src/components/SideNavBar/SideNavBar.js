@@ -1,7 +1,7 @@
 import {Box, Collapse, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import {NAVIGATION_ITEMS, PRACTICES_PATH} from "./NavigationItems";
 import * as React from "react";
-import {styled, useTheme} from "@mui/material/styles";
+import {styled} from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import KimedicsLogo from '../../assets/kimedics_logo.svg'
 import KimedicsSmallLogo from '../../assets/kimedics_small_logo.svg'
@@ -60,7 +60,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const SideNavBar = ( { children } ) => {
 	const location = useLocation();
 	const [open, setOpen] = React.useState(true);
-	console.log("location", location.pathname)
 
 	useEffect(() => {
 		if(location.pathname === PRACTICES_PATH){
@@ -106,9 +105,8 @@ const SideNavBar = ( { children } ) => {
 				<Divider />
 				<List>
 					{NAVIGATION_ITEMS.map((item) => (
-						<>
+						<Box key={item.text}>
 							<ListItem
-								key={item.text}
 								disablePadding sx={{ display: 'block' }}
 							>
 								<ListItemButton
@@ -157,7 +155,7 @@ const SideNavBar = ( { children } ) => {
 									</List>
 								</Collapse>
 							)}
-						</>
+						</Box>
 					))}
 				</List>
 			</Drawer>
