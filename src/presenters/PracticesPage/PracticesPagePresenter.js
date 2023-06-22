@@ -1,4 +1,4 @@
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable} from "mobx";
 
 class PracticesPagePresenter {
 
@@ -11,11 +11,16 @@ class PracticesPagePresenter {
 		makeAutoObservable(this)
 	}
 
-	onMount = async () => {
+	onMount(){
 		this.loading = true;
-		this.allPractices = await this.practicesService.fetchAll();
-		this.practices = this.allPractices;
-		this.loading = false;
+		this.practicesService.fetchAll()
+			.then(action((response) => {
+				this.allPractices = response
+				this.practices = this.allPractices;
+			}))
+			.finally(action(() => {
+				this.loading = false;
+			}))
 	}
 
 	onInputSearch = (query) => {
